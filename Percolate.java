@@ -1,29 +1,52 @@
+
 public class Percolate {
-	public PercolateHelp(int [] field){
-		for(int x = 0; x < field.length; x++){
-			if(field[x][0]==0){
-				field[x][0]=4;
-				Percolate(field);
+	private boolean change = false;
+	private int[][] field;
+
+	public Percolate(int[][] fieldX) {
+		field = fieldX;
+		for (int i = 0; i < field.length; i++) {
+			if (field[i][0] == 0) {
+				field[i][0] = 2;
+			}
+		}
+		change = true;
+		while (change == true) {
+			change = false;
+			for (int y = 0; y < field.length; y++) {
+				for (int x = 0; x < field.length; x++) {
+					if (field[x][y] == 2) {
+						if ((y < field.length - 1)) {
+							if (field[x][y + 1] == 0) {
+								field[x][y + 1] = 2;
+								change = true;
+							}
+						}
+						if ((x < field.length - 1)) {
+							if (field[x + 1][y] == 0) {
+								field[x + 1][y] = 2;
+								change = true;
+							}
+						}
+						if ((y > 0)) {
+							if (field[x][y - 1] == 0) {
+								field[x][y - 1] = 2;
+								change = true;
+							}
+						}
+						if ((x > 0)) {
+							if (field[x - 1][y] == 0) {
+								field[x - 1][y] = 2;
+								change = true;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
 
-	public PercolateRE(int [] field){
-		int xCord = 0;
-		int yCord = 0;
-		Out:for (int x = 0; x < field.length; x++){
-			for (int y = 0; y < field.length; y++){
-				if(field[x][y]==4){
-					xCord=x;
-					yCord=y;
-					break Out;
-				}
-			}
-		}
-		if((y!=0) && (field[xCord][yCord+1]==0){
-			field[xCord][yCord+1]=4;
-			field[xCord][yCord]=3;
-			PercolateRE(field)
-		}
+	public int[][] getGrid() {
+		return field;
 	}
 }
