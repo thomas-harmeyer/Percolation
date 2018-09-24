@@ -8,8 +8,8 @@ public class RandomGrid {
 		Scanner input = new Scanner(System.in);
 		int length = input.nextInt();
 		double chance = input.nextDouble();
-		RandomGrid randomGrid = new RandomGrid(length,chance);
-		System.out.print(randomGrid.toString());
+		PercolateREET Percolate = new PercolateREET(length, chance);
+		
 	}
 
 	public RandomGrid(int n, double p) {
@@ -22,12 +22,6 @@ public class RandomGrid {
 				}
 			}
 		}
-		/*
-		 * int [] field0= {1,0,0}; int [] field1= {0,1,0}; int [] field2= {0,1,0};
-		 * field[0]=field0; field[1]=field1; field[2]=field2;
-		 */
-		Percolate Percolate = new Percolate(field);
-		Percolate.getGrid();
 	}
 
 	public int getValue(int row, int col) {
@@ -50,7 +44,7 @@ public class RandomGrid {
 					toString+="X ";
 				}
 				if (field[x][y] == 0) {
-					toString+=" ";
+					toString+="  ";
 				}
 				if (field[x][y] == 2) {
 					toString+="* ";
